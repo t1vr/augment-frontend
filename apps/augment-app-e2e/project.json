@@ -1,0 +1,28 @@
+{
+  "root": "apps/augment-app-e2e",
+  "sourceRoot": "apps/augment-app-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/augment-app-e2e/cypress.json",
+        "devServerTarget": "augment-app:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "augment-app:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/augment-app-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["augment-app"]
+}
