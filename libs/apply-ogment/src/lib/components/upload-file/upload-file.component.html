@@ -1,0 +1,16 @@
+<p-card header="Choose a file for augmentation" >
+  <input
+    id="file-upload"
+    type="file"
+    accept="image/*"
+    (change)="onFileChanged($event)"
+  />
+  <ng-container *ngIf="this.imgSrc">
+    <p-image
+      [src]="this.imgSrc"
+      alt="Image"
+      width="250"
+      [preview]="true"
+    ></p-image>
+  </ng-container>
+</p-card>

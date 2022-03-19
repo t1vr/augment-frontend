@@ -10,7 +10,6 @@ import { MessageService } from 'primeng/api';
 export class ImageAugmentationComponent implements OnInit {
 
   uploadedFiles: any[] = [];
-  imgSrc:string='';
   images: any[]=[];
 
   displayCustom: boolean=true;
@@ -28,20 +27,6 @@ export class ImageAugmentationComponent implements OnInit {
         this.images = images
     })
 }
-  onFileChanged(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let file = event.target.files[0];
-      let fr = new FileReader();
-      fr.onload =  (event: any) => {
-        let base64 = event.target.result;
-        let img = base64.split(',')[1];
-        let blob = new Blob([window.atob(img)], { type: 'image/jpeg' });
-        this.imgSrc=fr.result as string;
-
-      }
-      fr.readAsDataURL(file);
-    }
-  }
 
 
  

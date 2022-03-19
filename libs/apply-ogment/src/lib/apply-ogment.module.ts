@@ -1,3 +1,4 @@
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { ImageModule } from 'primeng/image';
 import { CardModule } from 'primeng/card';
 import { ImageAugmentationComponent } from './components/image-augmentation/image-augmentation.component';
@@ -19,6 +20,6 @@ const routes: Route[] = [
     CardModule,
     ImageModule,
   ],
-  declarations:[ImageAugmentationComponent]
+  declarations:[ImageAugmentationComponent,UploadFileComponent]
 })
 export class ApplyOgmentModule {}
