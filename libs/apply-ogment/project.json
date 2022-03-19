@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/apply-ogment",
+  "sourceRoot": "libs/apply-ogment/src",
+  "prefix": "augment",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/apply-ogment"],
+      "options": {
+        "jestConfig": "libs/apply-ogment/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/apply-ogment/src/**/*.ts",
+          "libs/apply-ogment/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

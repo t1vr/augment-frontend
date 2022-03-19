@@ -1,7 +1,9 @@
 {
   "version": 2,
   "projects": {
+    "apply-ogment": "libs/apply-ogment",
     "augment-app": "apps/augment-app",
-    "augment-app-e2e": "apps/augment-app-e2e"
+    "augment-app-e2e": "apps/augment-app-e2e",
+    "core": "libs/core"
   }
 }

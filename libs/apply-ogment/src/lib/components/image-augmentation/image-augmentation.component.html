@@ -1,0 +1,49 @@
+<div [style]="{'padding': '0 15px'}">
+  <div class="row" style="margin-top: 77px;">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+      <p-card header="Choose a file for augmentation" [style]="{'width':' 95%','margin-bottom': '15px'}">
+        <input
+          id="file-upload"
+          type="file"
+          accept="image/*"
+          (change)="onFileChanged($event)"
+        />
+        <ng-container *ngIf="this.imgSrc">
+          <p-image
+            [src]="this.imgSrc"
+            alt="Image"
+            width="250"
+            [preview]="true"
+          ></p-image>
+        </ng-container>
+      </p-card>
+      <p-card header="Select augmentation techniques:" [style]="{'width':' 95%','margin-bottom': '15px'}">
+        <input
+          id="file-upload"
+          type="file"
+          accept="image/*"
+          (change)="onFileChanged($event)"
+        />
+        <ng-container *ngIf="this.imgSrc">
+          <p-image
+            [src]="this.imgSrc"
+            alt="Image"
+            width="250"
+            [preview]="true"
+          ></p-image>
+        </ng-container>
+      </p-card>
+    </div>
+    <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+      <p-card header="Augmented images">
+          
+      <div *ngIf="images" class="grid" style="max-width: 400px;">
+          <div *ngFor="let image of images; let index = index;" class="col-3" key="index">
+              <img [src]="image.thumbnailImageSrc" [alt]="image.alt" style="cursor: pointer"  (click)="imageClick(index)"/>
+          </div>
+      </div>
+      </p-card>
+    </div>
+  </div>
+</div>
+
