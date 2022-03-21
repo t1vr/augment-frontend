@@ -8,8 +8,10 @@ import { UIState, UIStore } from './ui.store';
   providedIn: 'root'
 })
 export class UIQuery extends Query<UIState> {
-  isGLobalLoaderVisible$=this.select(state=>state.isGlobalLoaderVisible);
-  constructor(private uiStore: UIStore) {
+  isLoaderVisible$=this.select(state=>state.isLoaderVisible);
+  constructor(private uiStore: UIStore) { 
     super(uiStore);
+    console.log('ui');
+
   }
 }

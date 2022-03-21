@@ -6,6 +6,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabViewModule } from 'primeng/tabview';
+import { LoaderComponent } from './components/loader/loader.component';
+import {ProgressSpinner, ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   imports: [
@@ -16,8 +18,10 @@ import { TabViewModule } from 'primeng/tabview';
     TabViewModule,
     GalleriaModule,
     TabViewModule,
+    ProgressSpinnerModule
+
   ],
-  declarations: [HeaderComponent],
-  exports: [HeaderComponent],
+  declarations: [HeaderComponent,LoaderComponent],
+  exports: [HeaderComponent,LoaderComponent],
 })
 export class CoreModule {}

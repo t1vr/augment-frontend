@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoService } from '@augment/core';
+import { PhotoService, UIQuery } from '@augment/core';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -19,7 +19,7 @@ export class ImageAugmentationComponent implements OnInit {
   /**
    *
    */
-  constructor(private messageService: MessageService,private photoService: PhotoService) {
+  constructor(public uiQuery:UIQuery,private photoService: PhotoService) {
     
   }
   

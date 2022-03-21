@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 
 export interface UIState {
-  isGlobalLoaderVisible: boolean;
+  isLoaderVisible: boolean;
 
 }
 
 export function createInitialUIState(): UIState {
   return {
-    isGlobalLoaderVisible: false,
+    isLoaderVisible: false,
   };
 }
 
@@ -17,9 +17,11 @@ export function createInitialUIState(): UIState {
 export class UIStore extends Store<UIState> {
   constructor() {
     super(createInitialUIState());
+    console.log('store');
+    
   }
 
-  setGlobalLoaderVisible(isGlobalLoaderVisible: boolean) {
-    this.update(state => ({ isGlobalLoaderVisible: isGlobalLoaderVisible }));
+  setLoaderVisible(isLoaderVisible: boolean) {
+    this.update(state => ({ isLoaderVisible: isLoaderVisible }));
   }
 }
