@@ -1,3 +1,5 @@
+import { ButtonModule } from 'primeng/button';
+import { FileUploadModule } from 'primeng/fileupload';
 import { CoreModule } from '@augment/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
@@ -12,17 +14,19 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { FormsModule } from '@angular/forms';
 import { TabViewModule } from 'primeng/tabview';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {SliderModule} from 'primeng/slider';
 
 const routes: Route[] = [
   {
     path: '',
-    component:ImageAugmentationComponent
+    component: ImageAugmentationComponent,
   },
 ];
 
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule.forChild(routes),
     CoreModule,
     CardModule,
@@ -32,8 +36,12 @@ const routes: Route[] = [
     TabViewModule,
     CheckboxModule,
     FormsModule,
-    ScrollPanelModule
-  ],
-  declarations:[ImageAugmentationComponent,UploadFileComponent]
+    ScrollPanelModule,
+    FileUploadModule,
+    InputNumberModule,
+    SliderModule,
+    ButtonModule 
+    ],
+  declarations: [ImageAugmentationComponent, UploadFileComponent],
 })
 export class ApplyOgmentModule {}

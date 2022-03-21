@@ -3,12 +3,13 @@ import { Store, StoreConfig } from '@datorama/akita';
 
 export interface UIState {
   isLoaderVisible: boolean;
-
+  uploadedImage:Blob|string;
 }
 
 export function createInitialUIState(): UIState {
   return {
     isLoaderVisible: false,
+    uploadedImage:''
   };
 }
 

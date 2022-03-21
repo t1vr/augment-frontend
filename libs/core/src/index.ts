@@ -6,3 +6,7 @@ export * from './lib/services/Photo.Service';
 
 export * from './lib/states/ui/ui.store'
 export * from './lib/states/ui/ui.query'
+
+
+
+export * from './lib/data-models/ImageAugmentModel'

@@ -1,3 +1,5 @@
+import { UIQuery } from '@augment/core';
+import { UIStore } from './../../../../../core/src/lib/states/ui/ui.store';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,27 +12,33 @@ export class UploadFileComponent implements OnInit {
 
   imgSrc:string='';
 
-  constructor() { }
+  constructor(private uiStore:UIStore,private uiQuery:UIQuery) { }
 
   ngOnInit() {
+    this.uiQuery.uploadedImage$.subscribe(
+      response=>console.log(response)
+      
+    )
   }
 
   onFileChanged(event: any) {
     
     if (event.target.files && event.target.files[0]) {
       let file = event.target.files[0];
-      
+      console.log(file);
       let fr = new FileReader();
       fr.onload =  (event: any) => {
         let base64 = event.target.result;
         console.log(base64);
 
         let img = base64.split(',')[1];
-        console.log(img);
         
         let blob = new Blob([window.atob(img)], { type: 'image/jpeg' });
+        this.uiStore.update({uploadedImage:blob});
+
         console.log(blob);
-        
+        console.log(file);
+
         this.imgSrc=fr.result as string;
 
       }
@@ -38,5 +46,11 @@ export class UploadFileComponent implements OnInit {
 
       fr.readAsDataURL(file);
     }
+  }
+
+  onBasicUpload(event:any) {
+    console.log(event);
+    console.log(event.currentFiles[0]);
+
   }
 }
