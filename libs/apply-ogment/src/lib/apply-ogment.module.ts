@@ -1,3 +1,4 @@
+import { CoreModule } from '@augment/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { ImageModule } from 'primeng/image';
@@ -23,6 +24,7 @@ const routes: Route[] = [
   imports: [
     CommonModule, 
     RouterModule.forChild(routes),
+    CoreModule,
     CardModule,
     ImageModule,
     TabViewModule,
