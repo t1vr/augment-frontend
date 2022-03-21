@@ -15,6 +15,7 @@ export class ImageAugmentationComponent implements OnInit {
   displayCustom: boolean=true;
 
   activeIndex: number = 0;
+  selectedCities:string=''
   /**
    *
    */

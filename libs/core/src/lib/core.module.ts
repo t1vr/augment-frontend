@@ -1,10 +1,11 @@
+import { GalleriaModule } from 'primeng/galleria';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { HeaderComponent } from './components/header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {TabViewModule} from 'primeng/tabview';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   imports: [
@@ -12,7 +13,9 @@ import {TabViewModule} from 'primeng/tabview';
     MenubarModule,
     InputTextModule,
     ButtonModule,
-    TabViewModule
+    TabViewModule,
+    GalleriaModule,
+    TabViewModule,
   ],
   declarations: [HeaderComponent],
   exports: [HeaderComponent],
