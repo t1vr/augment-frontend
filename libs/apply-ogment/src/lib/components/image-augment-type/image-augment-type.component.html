@@ -1,0 +1,76 @@
+<div>
+  <div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        value="blur"
+        [(ngModel)]="selectedTypes"
+        label="Blur"
+        (onChange)="onChange()"
+      ></p-checkbox>
+    </div>
+    <p-slider [(ngModel)]="val" [min]="0" [max]="100"></p-slider>
+  </div>
+  <div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        value="vertical_shift"
+
+        [(ngModel)]="selectedTypes"
+        label="Vertical Shift"
+      ></p-checkbox>
+    </div>
+    <p-slider [(ngModel)]="val" [min]="0" [max]="100"></p-slider>
+  </div>
+  <div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        value="horizontal_shift"
+
+        [(ngModel)]="selectedTypes"
+        label="horizontal_shift           "
+      ></p-checkbox>
+    </div>
+    <p-slider [(ngModel)]="val" [min]="0" [max]="100"></p-slider>
+  </div>
+  <div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        value="zoom"
+
+        [(ngModel)]="selectedTypes"
+        label="zoom"
+      ></p-checkbox>
+    </div>
+    <p-slider [(ngModel)]="val" [min]="0" [max]="100"></p-slider>
+  </div>
+
+  <div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        value="rotation"
+
+        [(ngModel)]="selectedTypes"
+        label="rotation"
+      ></p-checkbox>
+    </div>
+    <p-slider [(ngModel)]="val" [min]="0" [max]="100"></p-slider>
+  </div>
+
+  <div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        value="horizontal_shift_mode"
+
+        [(ngModel)]="selectedTypes"
+        label="horizontal_shift_mode"
+      ></p-checkbox>
+    </div>
+    <p-slider [(ngModel)]="val" [min]="0" [max]="100"></p-slider>
+  </div>
+</div>

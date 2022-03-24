@@ -1,3 +1,4 @@
+import { ImageAugmentTypeComponent } from './components/image-augment-type/image-augment-type.component';
 import { ButtonModule } from 'primeng/button';
 import { FileUploadModule } from 'primeng/fileupload';
 import { CoreModule } from '@augment/core';
@@ -42,6 +43,6 @@ const routes: Route[] = [
     SliderModule,
     ButtonModule 
     ],
-  declarations: [ImageAugmentationComponent, UploadFileComponent],
+  declarations: [ImageAugmentationComponent, UploadFileComponent,ImageAugmentTypeComponent],
 })
 export class ApplyOgmentModule {}

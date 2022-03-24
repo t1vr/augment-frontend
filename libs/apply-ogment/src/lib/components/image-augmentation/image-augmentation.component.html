@@ -7,56 +7,8 @@
       <div class="p-b-10">
         <p-card [style]="{ width: '100%', height: '65vh' }">
           <p-scrollPanel [style]="{ width: '100%', height: '58vh' }">
-            <div>
-              <div class="field-checkbox">
-                <p-checkbox
-                  [binary]="true"
-                  [(ngModel)]="augmentationType[0].isChecked"
-                  [label]="augmentationType[0].name"
-                ></p-checkbox>
-                <!-- <label for="ny">augmentationType[0].name</label> -->
-              </div>
-              <p-slider [(ngModel)]="val" [min]="0" [max]="100"></p-slider>
-            </div>
-
+            <app-image-augment-type></app-image-augment-type>
           </p-scrollPanel>
-          
-          <div class="p-field-checkbox">
-            <p-checkbox
-              name="group1"
-              value="New York"
-              [(ngModel)]="selectedCities"
-              inputId="ny"
-            ></p-checkbox>
-            <label for="ny">New York</label>
-          </div>
-          <div class="p-field-checkbox">
-            <p-checkbox
-              name="group1"
-              value="San Francisco"
-              [(ngModel)]="selectedCities"
-              inputId="sf"
-            ></p-checkbox>
-            <label for="sf">San Francisco</label>
-          </div>
-          <div class="p-field-checkbox">
-            <p-checkbox
-              name="group1"
-              value="Los Angeles"
-              [(ngModel)]="selectedCities"
-              inputId="la"
-            ></p-checkbox>
-            <label for="la">Los Angeles</label>
-          </div>
-          <div class="p-field-checkbox">
-            <p-checkbox
-              name="group1"
-              value="Chicago"
-              [(ngModel)]="selectedCities"
-              inputId="ch"
-            ></p-checkbox>
-            <label for="ch">Chicago</label>
-          </div> -->
         </p-card>
       </div>
     </div>
@@ -76,12 +28,6 @@
             />
           </div>
         </div>
-
-        <!-- <div *ngIf="images" class="grid" >
-          <div *ngFor="let image of images; let index = index;"  key="index">
-              <img [src]="image.thumbnailImageSrc" [alt]="image.alt" style="cursor: pointer"  (click)="imageClick(index)"/>
-          </div>
-      </div> -->
       </p-card>
     </div>
   </div>
