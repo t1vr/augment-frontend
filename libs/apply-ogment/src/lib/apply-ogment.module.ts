@@ -1,3 +1,5 @@
+import { DropdownModule } from 'primeng/dropdown';
+import { HttpClientModule } from '@angular/common/http';
 import { ImageAugmentTypeComponent } from './components/image-augment-type/image-augment-type.component';
 import { ButtonModule } from 'primeng/button';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -29,6 +31,7 @@ const routes: Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    HttpClientModule,
     CoreModule,
     CardModule,
     ImageModule,
@@ -41,7 +44,8 @@ const routes: Route[] = [
     FileUploadModule,
     InputNumberModule,
     SliderModule,
-    ButtonModule 
+    ButtonModule,
+    DropdownModule
     ],
   declarations: [ImageAugmentationComponent, UploadFileComponent,ImageAugmentTypeComponent],
 })

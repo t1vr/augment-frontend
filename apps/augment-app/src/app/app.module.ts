@@ -1,3 +1,4 @@
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,7 +31,8 @@ import { CoreModule } from '@augment/core';
     HttpClientModule,
     ImageModule,
     GalleriaModule,
-    CoreModule
+    CoreModule,
+    ScrollPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -5,29 +5,50 @@
         <app-upload-file></app-upload-file>
       </div>
       <div class="p-b-10">
-        <p-card [style]="{ width: '100%', height: '65vh' }">
+        <p-card
+          [style]="{ width: '100%', height: '65vh' }"
+          class="aug-type-card"
+        >
           <p-scrollPanel [style]="{ width: '100%', height: '58vh' }">
+            <h6>Select Augmentation type</h6>
             <app-image-augment-type></app-image-augment-type>
           </p-scrollPanel>
         </p-card>
       </div>
     </div>
     <div class="col-12 col-sm-12 col-md-8 col-lg-8">
-      <p-card header="Augmented images">
-        <div *ngIf="images" class="grid d-flex flex-wrap">
-          <div
-            *ngFor="let image of images; let index = index"
-            class=""
-            key="index"
-          >
-            <img
+      <p-card [style]="{ height: '90vh' }" class="gallery-card">
+        <div class="d-flex flex-row justify-content-between align-items-center">
+          <h5>Augmented Images</h5>
+          <p-dropdown
+            [options]="cities"
+            [(ngModel)]="selectedCity"
+            optionLabel="name"
+            placeholder="Download"            
+            (onChange)="oncahnge()"
+          ></p-dropdown>
+        </div>
+
+        <p-scrollPanel [style]="{ width: '100%', height: '80vh' }">
+          <div *ngIf="images" class="grid d-flex flex-wrap">
+            <div
+              *ngFor="let image of images; let index = index"
+              class="gallery"
+              key="index"
+            >
+              <!-- <img
               [src]="image.thumbnailImageSrc"
               [alt]="image.alt"
               style="cursor: pointer"
               (click)="imageClick(index)"
-            />
+            /> -->
+              <div target="_blank" href="img_5terre.jpg">
+                <img [src]="image.thumbnailImageSrc" [alt]="image.alt" />
+              </div>
+              <div class="desc">Description</div>
+            </div>
           </div>
-        </div>
+        </p-scrollPanel>
       </p-card>
     </div>
   </div>

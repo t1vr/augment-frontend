@@ -1,4 +1,4 @@
-<p-card [style]="{ height: '100%' }">
+<p-card [style]="{ height: '100%' }" styleClass="upload-card">
   <div style="margin-right: 5px;    display: inline;">
     <input
     id="file-upload"
@@ -9,6 +9,7 @@
   <label for="file-upload" class="p-button p-button-raised p-button-rounded">
     <i class="pi pi-plus"></i>
   </label>
+
   </div>
   <!-- <p-fileUpload
     mode="basic"
@@ -17,12 +18,14 @@
     (onSelect)="onBasicUpload($event)"
   ></p-fileUpload> -->
 
-  <ng-container *ngIf="this.imgSrc">
+  <div *ngIf="this.imgSrc">
     <p-image
       [src]="this.imgSrc"
       alt="Image"
       width="150"
       [preview]="true"
     ></p-image>
-  </ng-container>
+  </div>
 </p-card>
+
+

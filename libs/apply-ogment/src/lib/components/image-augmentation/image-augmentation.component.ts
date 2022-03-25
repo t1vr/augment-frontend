@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AugmentationTypeModel, PhotoService, UIQuery } from '@augment/core';
 import { MessageService } from 'primeng/api';
-
+import * as JSZip from 'jszip';
+import * as FileSaver from 'file-saver';
 @Component({
   selector: 'app-image-augmentation',
   templateUrl: './image-augmentation.component.html',
@@ -22,8 +23,23 @@ export class ImageAugmentationComponent implements OnInit {
   constructor(public uiQuery: UIQuery, private photoService: PhotoService) {}
 
   ngOnInit() {
+    this.photoService.getImagesRaw().subscribe((images: any) => {
+      let img=images;
+      const blob2Base64 = (blob:Blob):Promise<string> => {
+        return new Promise<string> ((resolve,reject)=> {
+             const reader = new FileReader();
+             reader.readAsDataURL(blob);
+             reader.onload = () => resolve(reader.result!.toString());
+             reader.onerror = error => reject(error);
+         })
+        }
+        blob2Base64(img).then(res=>console.log(res))
+
+      console.log(this.images);
+    });
     this.photoService.getImages().then((images) => {
       this.images = images;
+      console.log(this.images);
     });
   }
 
@@ -69,4 +85,29 @@ export class ImageAugmentationComponent implements OnInit {
     this.activeIndex = index;
     this.displayCustom = true;
   }
+
+  download() {
+    var zip = new JSZip();
+    zip.file('Title.txt', 'hello');
+    var imgFolder = zip.folder('images')!;
+    for (let i = 0; i < this.images?.length; i++) {
+      imgFolder.file(this.images[i].name, this.images[i], { base64: true });
+    }
+    zip.generateAsync({ type: 'blob' }).then(function (content) {
+      FileSaver.saveAs(content, 'Sample.zip');
+    });
+  }
+
+
+  cities: any[]= [
+    {name: 'All', code: 'NY'},
+    {name: 'Selected', code: 'RM'},
+];
+
+  selectedCity: any;
+  oncahnge(){
+    console.log('sldkf');
+    
+  }
+
 }
