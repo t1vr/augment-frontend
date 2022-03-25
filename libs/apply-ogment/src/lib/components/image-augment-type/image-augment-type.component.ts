@@ -49,7 +49,6 @@ export class ImageAugmentTypeComponent implements OnInit {
     let formdata=new FormData();
     let model:any[]=[];
     for(let i=0;i<this.selectedTypes.length;i++){
-      
       model.push(this.augmentationType[this.selectedTypes[i]]);
       console.log(model);
     }
@@ -63,8 +62,9 @@ export class ImageAugmentTypeComponent implements OnInit {
     console.log(fileUploadModel.augmentationTypes);
     
 
-    this.httpClient.post('http://127.0.0.1:8000/image/add/',formdata).subscribe(
-      (response:any)=>{console.log(response);
+    this.httpClient.post('http://127.0.0.1:8000/image/augment/',formdata).subscribe(
+      (response:any)=>{
+        console.log(response);
         let base64String = btoa(String.fromCharCode(...new Uint8Array(response.label)));
         base64String='data:image/png;base64,'+base64String;
         console.log(base64String);

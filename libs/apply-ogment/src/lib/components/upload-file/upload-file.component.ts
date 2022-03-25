@@ -56,7 +56,7 @@ export class UploadFileComponent implements OnInit {
     let formdata=new FormData();
     formdata.append('image',this.file); 
 
-    this.httpClient.post('http://127.0.0.1:8000/image/add/',formdata).subscribe(
+    this.httpClient.post('http://127.0.0.1:8000/image/augment/',formdata).subscribe(
       response=>console.log(response),
       error=>console.log(error)
     )

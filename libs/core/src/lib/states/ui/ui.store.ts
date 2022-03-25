@@ -4,12 +4,14 @@ import { Store, StoreConfig } from '@datorama/akita';
 export interface UIState {
   isLoaderVisible: boolean;
   uploadedImage:Blob|string;
+  fileUrl:any[];
 }
 
 export function createInitialUIState(): UIState {
   return {
     isLoaderVisible: false,
-    uploadedImage:''
+    uploadedImage:'',
+    fileUrl:[]
   };
 }
 
@@ -18,8 +20,6 @@ export function createInitialUIState(): UIState {
 export class UIStore extends Store<UIState> {
   constructor() {
     super(createInitialUIState());
-    console.log('store');
-    
   }
 
   setLoaderVisible(isLoaderVisible: boolean) {
