@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { UIQuery } from '@augment/core';
+import { AugmentationTypeModel, BaseResponseModel, FileAugmentationRequestModel, UIQuery, UIStore, AugmentedFileModel } from '@augment/core';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,23 +11,22 @@ export class ImageAugmentTypeComponent implements OnInit {
   selectedTypes: any[] = [];
   file:any;
   augmentationType: any = {
-    blur: { name: 'blur', isChecked: false, value: [] },
-    vertical_shift: { name: 'vertical_shift', isChecked: false, value: [] },
-    horizontal_shift: { name: 'horizontal_shift', isChecked: false, value: [] },
+    blur: { name: 'blur', value: [] },
+    vertical_shift: { name: 'vertical_shift',  value: [] },
+    horizontal_shift: { name: 'horizontal_shift',  value: [] },
     zoom: { name: 'zoom', isChecked: false, value: [] },
-    horizontal_flip: { name: 'horizontal_flip', isChecked: false, value: [] },
-    vertical_flip: { name: 'vertical_flip', isChecked: false, value: [] },
-    rotation: { name: 'rotation', isChecked: false, value: [] },
+    horizontal_flip: { name: 'horizontal_flip', value: [] },
+    vertical_flip: { name: 'vertical_flip',  value: [] },
+    rotation: { name: 'rotation',  value: [] },
     horizontal_shift_mode: {
       name: 'horizontal_shift_mode',
-      isChecked: false,
       value: [],
     },
   };
   augmentationParameter: any[] = [0, 0, 0, 0, 0, 0, 0, 0];
   val: any;
   src:string='';
-  constructor(private uiQuery:UIQuery,private httpClient:HttpClient,private changeDetection:ChangeDetectorRef) {}
+  constructor(private uiStore:UIStore,private uiQuery:UIQuery,private httpClient:HttpClient,private changeDetection:ChangeDetectorRef) {}
 
   ngOnInit() {
     this.uiQuery.uploadedImage$.subscribe(
@@ -46,39 +45,27 @@ export class ImageAugmentTypeComponent implements OnInit {
 
   onBasicUpload() {
 
-    let formdata=new FormData();
-    let model:any[]=[];
+    let augmentationTypeList:AugmentationTypeModel[]=[];
     for(let i=0;i<this.selectedTypes.length;i++){
-      model.push(this.augmentationType[this.selectedTypes[i]]);
-      console.log(model);
+      augmentationTypeList.push(this.augmentationType[this.selectedTypes[i]]);
     }
-    let fileUploadModel:RequestModel={
+    let fileUploadModel:any={
       file:this.file,
-      augmentationTypes:model
+      augmentTypes:augmentationTypeList
     }
+
+    let formdata=new FormData();
     formdata.append('image',fileUploadModel.file); 
-    formdata.append('types',fileUploadModel.augmentationTypes); 
-
-    console.log(fileUploadModel.augmentationTypes);
+    formdata.append('types',fileUploadModel.augmentTypes); 
+    console.log(fileUploadModel.augmentTypes);
     
-
     this.httpClient.post('http://127.0.0.1:8000/image/augment/',formdata).subscribe(
-      (response:any)=>{
-        console.log(response);
-        let base64String = btoa(String.fromCharCode(...new Uint8Array(response.label)));
-        base64String='data:image/png;base64,'+base64String;
-        console.log(base64String);
-        this.src=base64String
-        this.changeDetection.markForCheck();
-        console.log(this.src);
-        
+      (baseResponse:any)=>{
+        if(baseResponse&&baseResponse.success&&baseResponse.data){
+          this.uiStore.update({files:baseResponse.data})
+        }
       },
       error=>console.log(error)
     )
   }
-}
-
-export interface RequestModel{
-  file:Blob;
-  augmentationTypes:any;
 }

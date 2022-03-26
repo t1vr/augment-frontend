@@ -1,8 +1,7 @@
 export interface FileAugmentationRequestModel{
     file:Blob|string;
-    augmentType:AugmentationTypeModel[];
+    augmentTypes:AugmentationTypeModel[];
 }
-
 
 export interface AugmentationTypeModel{
     name:string;
@@ -11,7 +10,7 @@ export interface AugmentationTypeModel{
 
 export interface AugmentedFileModel{
     label:string;
-    URL:string;
+    url:string;
     code:string;
 }
 

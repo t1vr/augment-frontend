@@ -25,19 +25,18 @@
             [(ngModel)]="selectedCity"
             optionLabel="name"
             placeholder="Download"            
-            (onChange)="oncahnge()"
           ></p-dropdown>
         </div>
 
         <p-scrollPanel [style]="{ width: '100%', height: '80vh' }">
-          <div *ngIf="photos" class="grid d-flex flex-wrap">
+          <div *ngIf="images" class="grid d-flex flex-wrap">
             <div
-              *ngFor="let image of photos; let index = index"
+              *ngFor="let image of images; let index = index"
               class="gallery"
               key="index"
             >
               <div target="_blank" href="img_5terre.jpg">
-                <img [src]="image.url" [alt]="image.alt" />
+                <img [src]="image.url"  />
               </div>
               <div class="desc">{{image.label}}</div>
             </div>
