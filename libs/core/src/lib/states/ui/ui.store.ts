@@ -1,17 +1,18 @@
+import { AugmentedFileModel } from './../../data-models/ImageAugmentModel';
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 
 export interface UIState {
   isLoaderVisible: boolean;
   uploadedImage:Blob|string;
-  fileUrl:any[];
+  files:AugmentedFileModel[];
 }
 
 export function createInitialUIState(): UIState {
   return {
     isLoaderVisible: false,
     uploadedImage:'',
-    fileUrl:[]
+    files:[]
   };
 }
 

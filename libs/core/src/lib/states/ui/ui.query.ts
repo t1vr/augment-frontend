@@ -10,7 +10,7 @@ import { UIState, UIStore } from './ui.store';
 export class UIQuery extends Query<UIState> {
   isLoaderVisible$=this.select(state=>state.isLoaderVisible);
   uploadedImage$=this.select(state=>state.uploadedImage);
-  fileUrls$=this.select(state=>state.fileUrl)
+  files$=this.select(state=>state.files)
   constructor(private uiStore: UIStore) { 
     super(uiStore);
   }
