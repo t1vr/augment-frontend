@@ -23,17 +23,26 @@ export class ImageAugmentTypeComponent implements OnInit {
     brightness:{name:'brightness',value:[0]},
     to_gray:{name:'to_gray',value:[0]},
     contrast:{name:'contrast',value:[0]},
+    to_green:{name:'to_green',value:[0]},
+
+    to_red:{name:'to_red',value:[0]},
+
+    to_blue:{name:'to_blue',value:[0]},
+
+    to_hsv:{name:'to_hsv',value:[0]},
+
     horizontal_shift_mode: {
       name: 'wrap',
       value: [0],
     },
   };
+
   augmentationParameter: any[] = [0, 0, 0, 0, 0, 0, 0, 0];
   val: any;
   src: string = '';
   constructor(
     private uiStore: UIStore,
-    private uiQuery: UIQuery,
+    public uiQuery: UIQuery,
     private httpClient: HttpClient,
     private changeDetection: ChangeDetectorRef
   ) {}

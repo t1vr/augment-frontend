@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { TabViewModule } from 'primeng/tabview';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {SliderModule} from 'primeng/slider';
+import {BlockUIModule} from 'primeng/blockui';
 
 const routes: Route[] = [
   {
@@ -45,7 +46,8 @@ const routes: Route[] = [
     InputNumberModule,
     SliderModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    BlockUIModule
     ],
   declarations: [ImageAugmentationComponent, UploadFileComponent,ImageAugmentTypeComponent],
 })
