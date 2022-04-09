@@ -81,7 +81,6 @@ export class ImageAugmentationComponent implements OnInit {
 
     this.uiQuery.files$.subscribe((response) => {
       // this.images=response;
-      console.log('response ' + response);
     });
   }
 
