@@ -20,29 +20,30 @@
       <p-card [style]="{ height: '90vh' }" class="gallery-card">
         <div class="d-flex flex-row justify-content-between align-items-center">
           <h5>Augmented Images</h5>
-          <p-dropdown
+          <!-- <p-dropdown
             [options]="cities"
             [(ngModel)]="selectedCity"
             optionLabel="name"
-            placeholder="Download"            
-          ></p-dropdown>
+            placeholder="Download"     
+            (onModelchange)="change()"       
+          ></p-dropdown> -->
+          <p-button label="Download" (onClick)="downloadFiles()"></p-button>
+
         </div>
 
         <p-scrollPanel [style]="{ width: '100%', height: '80vh' }">
           <div *ngIf="images" class="grid d-flex flex-wrap">
             <div
-              *ngFor="let image of images; let index = index"
+              *ngFor="let image of imageNameList; let index = index"
               class="gallery"
               key="index"
             >
-              <div target="_blank" href="img_5terre.jpg">
-                <img [src]="image.url"  />
+              <div >
+                <img src='assets/images/{{image}}.jpeg'/>
               </div>
-              <div class="desc">{{image.label}}</div>
+              <div class="desc">{{image}}</div>
             </div>
           </div>
-          <!-- <img src="https://firebasestorage.googleapis.com/v0/b/augma-de550.appspot.com/o/chackma%20numeric.PNG?alt=media&token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImIwNmExMTkxNThlOGIyODIxNzE0MThhNjdkZWE4Mzc0MGI1ZWU3N2UiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYXVnbWEtZGU1NTAiLCJhdWQiOiJhdWdtYS1kZTU1MCIsImF1dGhfdGltZSI6MTY0ODIyODUyNywidXNlcl9pZCI6Ik5vc0tJNEs1OGhmN3BUTVpNRW54YlhDTVVsRDMiLCJzdWIiOiJOb3NLSTRLNThoZjdwVE1aTUVueGJYQ01VbEQzIiwiaWF0IjoxNjQ4MjI4NTI3LCJleHAiOjE2NDgyMzIxMjcsImVtYWlsIjoibnJtZXRodW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbIm5ybWV0aHVuQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.jvdjVSm0pjCWGgqgfe_WZquLW-HVYW94fHdOvTcz_gqw34_U7Xf0rGW1qfesPFaJ16IqHBsMK-7TkzcCb7srJkClhEWMSD0N2UKSKef0ASacvf8hao4wm6VLtKUsSzK2AoOkVp_YXr1m_lsKdYhdqcVWmJDD45fpD_qXxXd5YXlqviBFC3tYZgN_UFFADTK0dXzfyxOxW7AUjIEcD5XXtJgaGFq-AEI0TMRvL4vqZ-xz588t28MgCkw2xAUiThbwGZVT5J72DaewoR20_nWUf26ZTE4U6m5GtyGr5VvK9AQFkEd3Cb07ij6VgGgeqfIID2WuSWRSquibhq7H-elm0w&fbclid=IwAR1hIKQQH5w81t_Wv0ftof8HwS74ljc-YixtZrqgcIsvfMaS-6Eg6PE1C2o" alt="">
-          <p-button label="Download" (click)="downloadFile()"></p-button> -->
         </p-scrollPanel>
       </p-card>
     </div>
