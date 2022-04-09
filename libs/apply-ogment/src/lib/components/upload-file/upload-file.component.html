@@ -1,5 +1,5 @@
 <p-card [style]="{ height: '100%' }" styleClass="upload-card">
-  <div style="margin-right: 5px;    display: inline;">
+  <div style="margin-right: 40px;    display: inline;">
     <input
     id="file-upload"
     type="file"
@@ -11,18 +11,13 @@
   </label>
 
   </div>
-  <!-- <p-fileUpload
-    mode="basic"
-    accept="image/*"
-
-    (onSelect)="onBasicUpload($event)"
-  ></p-fileUpload> -->
 
   <div *ngIf="this.imgSrc">
     <p-image
       [src]="this.imgSrc"
       alt="Image"
       width="150"
+      height="160"
       [preview]="true"
     ></p-image>
   </div>

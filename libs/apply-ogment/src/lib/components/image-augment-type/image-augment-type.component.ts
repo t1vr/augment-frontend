@@ -11,16 +11,21 @@ export class ImageAugmentTypeComponent implements OnInit {
   selectedTypes: any[] = [];
   file: any;
   augmentationType: any = {
-    blur: { name: 'blur', value: [] },
-    vertical_shift: { name: 'vertical_shift', value: [] },
-    horizontal_shift: { name: 'horizontal_shift', value: [] },
-    zoom: { name: 'zoom', isChecked: false, value: [] },
-    horizontal_flip: { name: 'horizontal_flip', value: [] },
-    vertical_flip: { name: 'vertical_flip', value: [] },
-    rotation: { name: 'rotation', value: [] },
+    blur: { name: 'blur', value: [0] },
+    vertical_shift: { name: 'vertical_shift', value: [0] },
+    horizontal_shift: { name: 'horizontal_shift', value: [0] },
+    zoom: { name: 'zoom', value: [0] },
+    horizontal_flip: { name: 'horizontal_flip', value: [0] },
+    vertical_flip: { name: 'vertical_flip', value: [0] },
+    rotation: { name: 'rotation', value: [0] },
+    reflect_mode:{name:'reflect_mode',value:[0]},
+    shear:{name:'shear',value:[0]},
+    brightness:{name:'brightness',value:[0]},
+    to_gray:{name:'to_gray',value:[0]},
+    contrast:{name:'contrast',value:[0]},
     horizontal_shift_mode: {
-      name: 'horizontal_shift_mode',
-      value: [],
+      name: 'wrap',
+      value: [0],
     },
   };
   augmentationParameter: any[] = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -52,6 +57,8 @@ export class ImageAugmentTypeComponent implements OnInit {
     for (let i = 0; i < this.selectedTypes.length; i++) {
       augmentationTypeList.push(this.augmentationType[this.selectedTypes[i]]);
     }
+    console.log('this',augmentationTypeList);
+    
     let fileUploadModel: any = {
       file: this.file,
       augmentTypes: augmentationTypeList,
@@ -59,9 +66,8 @@ export class ImageAugmentTypeComponent implements OnInit {
 
     let formdata = new FormData();
     formdata.append('image', fileUploadModel.file);
-    formdata.append('types', fileUploadModel.augmentTypes);
+    formdata.append('types', JSON.stringify(fileUploadModel.augmentTypes));
     console.log(fileUploadModel.augmentTypes);
-    console.log(fileUploadModel);
 
     this.httpClient
       .post('http://127.0.0.1:8000/image/augment/', formdata)

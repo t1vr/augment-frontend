@@ -1,6 +1,6 @@
-<div>
-  <div class="p-10-0">
-    <div class="field-checkbox m-b-10">
+<div class="f-w-700">
+  <div class="p-10-0 ">
+    <div class="field-checkbox m-b-10 d-flex justify-content-between">
       <p-checkbox
         name="group1"
         value="blur"
@@ -8,9 +8,13 @@
         label="Blur"
         (onChange)="onChange()"
       ></p-checkbox>
+      
+        <p>{{augmentationType.blur.value[0]}}</p>
+      
     </div>
+    
     <p-slider
-      [(ngModel)]="augmentationType['blur'].value"
+      [(ngModel)]="augmentationType['blur'].value[0]"
       [min]="0"
       [max]="100"
       class="slider"
@@ -43,32 +47,37 @@
     </div>
   </div> -->
   <div class="p-10-0">
-    <div class="field-checkbox m-b-10">
+    <div class="field-checkbox m-b-10 d-flex justify-content-between">
       <p-checkbox
         name="group1"
         value="vertical_shift"
         [(ngModel)]="selectedTypes"
         label="Vertical Shift"
       ></p-checkbox>
+      <p>{{augmentationType.vertical_shift.value[0]}}</p>
+
     </div>
     <p-slider
-      [(ngModel)]="augmentationType['vertical_shift'].value"
+      [(ngModel)]="augmentationType['vertical_shift'].value[0]"
       [min]="0"
       [max]="100"
       class="slider"
       ></p-slider>
   </div>
   <div class="p-10-0">
-    <div class="field-checkbox m-b-10">
+    <div class="field-checkbox m-b-10 d-flex justify-content-between">
       <p-checkbox
         name="group1"
         value="horizontal_shift"
         [(ngModel)]="selectedTypes"
-        label="horizontal_shift           "
+        label="Horizontal Shift"
       ></p-checkbox>
+      <div>
+        <p>{{augmentationType.horizontal_shift.value[0]}}</p>
+      </div>
     </div>
     <p-slider
-      [(ngModel)]="augmentationType['horizontal_shift'].value"
+      [(ngModel)]="augmentationType['horizontal_shift'].value[0]"
       [min]="0"
       [max]="100"
       class="slider"
@@ -76,16 +85,19 @@
     ></p-slider>
   </div>
   <div class="p-10-0">
-    <div class="field-checkbox m-b-10">
+    <div class="field-checkbox m-b-10 d-flex justify-content-between">
       <p-checkbox
         name="group1"
         value="zoom"
         [(ngModel)]="selectedTypes"
-        label="zoom"
+        label="Zoom"
       ></p-checkbox>
+      <div>
+        <p>{{augmentationType.zoom.value[0]}}</p>
+      </div>
     </div>
     <p-slider
-      [(ngModel)]="augmentationType['zoom'].value"
+      [(ngModel)]="augmentationType['zoom'].value[0]"
       [min]="0"
       [max]="100"
       class="slider"
@@ -93,16 +105,19 @@
   </div>
 
   <div class="p-10-0">
-    <div class="field-checkbox m-b-10">
+    <div class="field-checkbox m-b-10 d-flex justify-content-between">
       <p-checkbox
         name="group1"
         value="rotation"
         [(ngModel)]="selectedTypes"
-        label="rotation"
+        label="Rotation"
       ></p-checkbox>
+      <div>
+        <p>{{augmentationType.rotation.value[0]}}</p>
+      </div>
     </div>
     <p-slider
-      [(ngModel)]="augmentationType['rotation'].value"
+      [(ngModel)]="augmentationType['rotation'].value[0]"
       [min]="0"
       [max]="100"
       class="slider"
@@ -110,16 +125,19 @@
   </div>
 
   <div class="p-10-0">
-    <div class="field-checkbox m-b-10">
+    <div class="field-checkbox m-b-10 d-flex justify-content-between">
       <p-checkbox
         name="group1"
         value="horizontal_shift_mode"
         [(ngModel)]="selectedTypes"
-        label="horizontal_shift_mode"
+        label="Horizontal Shift Mode"
       ></p-checkbox>
+      <div>
+        <p>{{augmentationType.horizontal_shift_mode.value[0]}}</p>
+      </div>
     </div>
     <p-slider
-      [(ngModel)]="augmentationType['horizontal_shift_mode'].value"
+      [(ngModel)]="augmentationType['horizontal_shift_mode'].value[0]"
       [min]="0"
       [max]="100"
       class="slider"

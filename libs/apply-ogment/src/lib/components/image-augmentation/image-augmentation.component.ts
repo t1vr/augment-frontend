@@ -12,52 +12,9 @@ import * as FileSaver from 'file-saver';
 })
 export class ImageAugmentationComponent implements OnInit {
   uploadedFiles: any[] = [];
-  images: AugmentedFileModel[] = [
-    {
-      label: 'Horizontal Shift',
-      url: 'https://firebasestorage.googleapis.com/v0/b/augma-de550.appspot.com/o/demo.jpg?alt=media&token=15d4ef91-dc09-427e-9b62-6ac3d9fc974e',
-      code: 'some code',
-    },
-    {
-      label: 'Vertical Shift',
-      url: 'https://firebasestorage.googleapis.com/v0/b/augma-de550.appspot.com/o/demo.jpg?alt=media&token=15d4ef91-dc09-427e-9b62-6ac3d9fc974e',
-      code: 'some code',
-    },
-    {
-      label: 'Zoom',
-      url: 'https://firebasestorage.googleapis.com/v0/b/augma-de550.appspot.com/o/demo.jpg?alt=media&token=15d4ef91-dc09-427e-9b62-6ac3d9fc974e',
-      code: 'some code',
-    },
-    {
-      label: 'Horizontal Flip',
-      url: 'https://firebasestorage.googleapis.com/v0/b/augma-de550.appspot.com/o/demo.jpg?alt=media&token=15d4ef91-dc09-427e-9b62-6ac3d9fc974e',
-      code: 'some code',
-    },
-    {
-      label: 'Vertical Flip',
-      url: 'https://firebasestorage.googleapis.com/v0/b/augma-de550.appspot.com/o/demo.jpg?alt=media&token=15d4ef91-dc09-427e-9b62-6ac3d9fc974e',
-      code: 'some code',
-    },
-    {
-      label: 'Rotate',
-      url: 'https://firebasestorage.googleapis.com/v0/b/augma-de550.appspot.com/o/demo.jpg?alt=media&token=15d4ef91-dc09-427e-9b62-6ac3d9fc974e',
-      code: 'some code',
-    },
-    {
-      label: 'Special Mode (Wrap,Nearest,Constant,Reflect)',
-      url: 'https://firebasestorage.googleapis.com/v0/b/augma-de550.appspot.com/o/demo.jpg?alt=media&token=15d4ef91-dc09-427e-9b62-6ac3d9fc974e',
-      code: 'some code',
-    },
-  ];
+  images: AugmentedFileModel[] = [];
   photos: any[] = [];
-  imageNameList: string[] = [
-    'h_flip_img',
-    'h_shift_img',
-    'rotate_img',
-    'special_mode_img',
-    'v_shift_img',
-    'zoom_img',
-  ];
+  imageNameList: string[] = [];
   val!: number;
   displayCustom: boolean = true;
 
@@ -80,7 +37,8 @@ export class ImageAugmentationComponent implements OnInit {
     // });
 
     this.uiQuery.files$.subscribe((response) => {
-      // this.images=response;
+      this.images = response;
+      console.log(this.images);
     });
   }
 
@@ -127,35 +85,29 @@ export class ImageAugmentationComponent implements OnInit {
   // }
 
   downloadFiles() {
-
     const zip = new JSZip();
-    // zip.file('Title.txt', 'hello');
-    this.http.get('assets/image.json').subscribe((response: any) => {
-      console.log(response.nameList);
-      for (let i = 0; i < response.nameList.length; i++) {
-        console.log(response.nameList[i]);
-        
-        this.http
-          .get(`assets/images/${response.nameList[i]}.jpeg`, { responseType: 'blob' })
-          .subscribe((res) => {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-              const base64data = reader.result as string;
-              zip.file(`${response.nameList[i]}.jpg`, base64data?.split('base64,')[1], {
-                base64: true,
-              });
-            };
+    for (let i = 0; i < this.images.length; i++) {
+      console.log('slkdfsdf', `assets/images/${this.images[i].url}`);
+      this.http
+        .get(`assets/images/${this.images[i].url}`, { responseType: 'blob' })
+        .subscribe((res) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            const base64data = reader.result as string;
+            zip.file(`${this.images[i].url}`, base64data?.split('base64,')[1], {
+              base64: true,
+            });
+          };
 
-            reader.readAsDataURL(res);
-            console.log(res);
-          });
-      }
-      setTimeout(() => {
-        zip.generateAsync({ type: 'blob' }).then(function (content) {
-          FileSaver.saveAs(content, 'Sample.zip');
+          reader.readAsDataURL(res);
+          console.log(res);
         });
-      }, 2000);
-    });
+    }
+    setTimeout(() => {
+      zip.generateAsync({ type: 'blob' }).then(function (content) {
+        FileSaver.saveAs(content, 'Sample.zip');
+      });
+    }, 2000);
 
     // const imgFolder = zip.folder('images')!;
     // for (let i = 0; i < this.imageNameList.length; i++) {
