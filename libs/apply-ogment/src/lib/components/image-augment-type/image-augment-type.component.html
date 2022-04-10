@@ -1,9 +1,13 @@
-<!-- <p-blockUI  [blocked]="(uiQuery.uploadedImage$|async)===null?true:false"></p-blockUI> -->
 
 <div #augmentTypesRef>
-  <div *ngIf="this.selectedTypes.length===0;else showCount">
-    <h6>Select Augmentation type</h6>
+  <div class="d-flex justify-content-between">
+    <div *ngIf="this.selectedTypes.length===0;else showCount" >
+      <h5>Select Augmentation type</h5>
+    </div>
+    <button [disabled]="!((uiQuery.isFileUploaded$|async)&&(this.selectedTypes.length>0))"  pButton pRipple type="button" [style]="{padding:'5px'}"  icon="pi pi-upload" class="p-button-success "  (click)="onBasicUpload()"></button>
+
   </div>
+  
   <ng-template #showCount>
     <h6>{{this.selectedTypes.length}} selected</h6>
   </ng-template>
@@ -187,7 +191,8 @@
         class="slider"
       ></p-slider>
     </div>
-    <div class="p-10-0">
+    <!-- shear starts here -->
+    <!-- <div class="p-10-0">
       <div class="field-checkbox m-b-10 d-flex justify-content-between">
         <p-checkbox
           name="group1"
@@ -205,7 +210,7 @@
         [max]="100"
         class="slider"
       ></p-slider>
-    </div>
+    </div> -->
     <div class="p-10-0">
       <div class="field-checkbox m-b-10 d-flex justify-content-between">
         <p-checkbox
@@ -323,6 +328,8 @@
     
   </div>
   
-  <p-button icon="pi pi-check" (click)="onBasicUpload()"></p-button>
-  
+<div class="d-flex justify-content-end mt-3 mb-3">
+  <button [disabled]="!((uiQuery.isFileUploaded$|async)&&(this.selectedTypes.length>0))"  pButton pRipple type="button" [style]="{padding:'5px'}"  icon="pi pi-upload" class="p-button-success "  (click)="onBasicUpload()"></button>
+
+</div>  
 </div>

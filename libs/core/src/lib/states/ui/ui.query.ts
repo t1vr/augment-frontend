@@ -9,6 +9,8 @@ import { UIState, UIStore } from './ui.store';
 })
 export class UIQuery extends Query<UIState> {
   isLoaderVisible$=this.select(state=>state.isLoaderVisible);
+  isFileUploaded$=this.select(state=>state.isFileUploaded);
+
   uploadedImage$=this.select(state=>state.uploadedImage);
   files$=this.select(state=>state.files)
   constructor(private uiStore: UIStore) { 

@@ -4,6 +4,7 @@ import { Store, StoreConfig } from '@datorama/akita';
 
 export interface UIState {
   isLoaderVisible: boolean;
+  isFileUploaded:boolean;
   uploadedImage:Blob|string;
   files:AugmentedFileModel[];
 }
@@ -11,6 +12,7 @@ export interface UIState {
 export function createInitialUIState(): UIState {
   return {
     isLoaderVisible: false,
+    isFileUploaded:false,
     uploadedImage:'',
     files:[]
   };
